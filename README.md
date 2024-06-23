@@ -138,3 +138,10 @@ iface=gr.Interface(fn=get_Response,inputs=[gr.Textbox(label="Insert code Snippet
 iface.launch(share=True,debug=True)
 ```
 
+## Screens
+### 1. Code explainer
+<kbd>![image](https://github.com/Nimisha-Mavar/Python_Code_Explainer/assets/112267753/05c334d0-fd17-4d8e-bab5-f41648eb8325)</kbd>
+
+### 2. Even Odd number  
+<kbd>![image](https://github.com/Nimisha-Mavar/Python_Code_Explainer/assets/112267753/66c6101f-29dd-4b3f-9d02-cb0c77e5ee74)
+</kbd>
