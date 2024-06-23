@@ -1,4 +1,5 @@
 # 👨‍💻👨‍🏫 Code Explainer with Generative Ai 🤖📚
+This project showcases how to use Google's Generative AI to explain Python code snippets. The project involves configuring the API, selecting a model, defining a response function, preparing a prompt, generating a response, and building an interactive web interface using Gradio. The resulting application allows users to input Python code and receive a detailed explanation of its functionality, making it a valuable tool for learning and debugging.
 
 ### 1️⃣ Import required Libraries
 ``` python 
