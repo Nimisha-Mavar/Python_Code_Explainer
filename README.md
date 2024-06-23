@@ -71,5 +71,70 @@ Code snippet is shared below, delimited with triple backticks:
 {Input_code}
 -```-
 """
-print(prompt)```
+print(prompt)
+```
+
+### 7️⃣ Get Response
+``` python 
+Response=get_Response(prompt)
+print(Response)
+```
+
+-# This code is to check if the value of variable X is positive or negative.
+
+1. The variable X is assigned the value 10.
+2. The if statement checks if the value of X is greater than 0.
+3. If the value of X is greater than 0, the print statement "X is positive" is executed.
+4. If the value of X is not greater than 0, the print statement "X is Negative" is executed.
+
+The final result of the code is "X is positive" because the value of X is greater than 0.
+
+## Make an Interface for This Explainer 🎴
+
+### install gradio 
+``` python
+!pip install gradio
+```
+
+### make interface using gradio
+``` python
+import gradio as gr
+import os
+import google.generativeai as plam
+
+#Configure API key
+plam.configure(api_key='AIzaSyByPkcLmF72Itb1yX17F6L65sg4Z4bq904')
+
+#select model
+models=[m for m in plam.list_models() if 'generateText' in m.supported_generation_methods]
+model=models[0].name
+
+
+#Get response function
+def get_Response(input_txt):
+  prompt=f"""
+  Your task is to act as a Python Code Explainer.
+  I'll give you a code Snippet.
+  Your job is to explain the code in simplest way with steps.
+  Also, give the final result of the code with reason.
+  Code snippet is shared below, delimited with triple backticks:
+  -```-
+  {input_txt}
+  -```-
+  """
+  Ans=plam.generate_text(
+    model=model,
+    prompt=prompt,
+    temperature=0, #for more determinastic result and 1 for more randomness result
+    max_output_tokens=500
+  )
+  response=Ans.result
+  return response
+
+
+#For interface
+iface=gr.Interface(fn=get_Response,inputs=[gr.Textbox(label="Insert code Snippet",lines=8)],outputs=[gr.Textbox(label="Explanation here",lines=8)],title="Python Code Explainer")
+
+iface.launch(share=True,debug=True)
+```
 
